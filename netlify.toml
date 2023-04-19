@@ -1,7 +1,0 @@
-[build]
-  publish = "/"
-  command = "npm start"
-[[redirects]]
-  from = "/*"
-  to = "src/index.js"
-  status = 200

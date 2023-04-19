@@ -1,3 +1,6 @@
 [[functions]]
   path = "/api/*"
   command = "node src/index.js"
+
+[build]
+  functions = "routes/"

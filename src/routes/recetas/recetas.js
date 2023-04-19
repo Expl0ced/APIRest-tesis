@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const mysqlConnection = require('../database.js');
+const mysqlConnection = require('../../database.js');
 
 // GET all recetas
 router.get('/', (req, res) => {

@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const sendMail= require('C:/Users/explo/APIRest tesis/src/mailer.js')
 
-const mysqlConnection  = require('../database.js');
+const mysqlConnection  = require('../../database.js');
 
 // GET all Employees
 router.get('/', (req, res) => {

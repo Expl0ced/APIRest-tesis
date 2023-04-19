@@ -28,13 +28,13 @@ app.use(bodyparser.urlencoded({
 
 
 // Routes
-app.use('/api/login', require('./routes/login'));
-app.use('/api/recetas', require('./routes/recetas'));
-app.use('/api/usuarios', require('./routes/usuarios'));
-app.use('/api/orden_nutri', require('./routes/nutricionista'));
-app.use('/api/modificar_user', require('./routes/asignar_paciente'));
-app.use('/api/archivo', require('./routes/subidas'));
-app.use('/api/saverecipe', require('./routes/receta_guardada'));
+app.use('/api/login', require('./routes/login/login'));
+app.use('/api/recetas', require('./routes/recetas/recetas'));
+app.use('/api/usuarios', require('./routes/usuarios/usuarios'));
+app.use('/api/orden_nutri', require('./routes/nutricionista/nutricionista'));
+app.use('/api/modificar_user', require('./routes/asignar_paciente/asignar_paciente'));
+app.use('/api/archivo', require('./routes/subidas/subidas'));
+app.use('/api/saverecipe', require('./routes/receta_guardada/receta_guardada'));
 
 // app.post("/uploads", (req, res) => { 
 //     const newpath = __dirname + "/files/";

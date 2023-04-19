@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-const mysqlConnection  = require('../database.js'); 
+const mysqlConnection  = require('../../database.js'); 
 router.get('/:id', (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('select rg.id, rg.idReceta, rg.idUser, r.Encabezado, r.Imagen from receta_guardada rg join recetas r on rg.idReceta=r.IdReceta join usuarios us on rg.idUser=us.idUser where rg.idUser=?;',[id],(err, rows, fields) => {

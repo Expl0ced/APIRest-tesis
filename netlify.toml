@@ -1,7 +1,7 @@
-[build]
-  functions = "routes/"
-  
-  [[functions]]
-  path = "/api/*"
+ [build]
   command = "node src/index.js"
-
+  
+[[redirects]]
+  from = "api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

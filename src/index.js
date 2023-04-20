@@ -12,7 +12,7 @@ app.set('port', process.env.PORT || 3000);
 
 // Middlewares
 app.use(cors({
-    origin: ['https://healthyfoodpage.netlify.app']
+    origin: '*'
 }));
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

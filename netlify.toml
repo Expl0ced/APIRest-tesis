@@ -1,11 +1,13 @@
 [build]
-functions="/routes"
 publish = "/"
+command = "npm start" 
+functions = "src/routes"
+
 
 [[redirects]]
 from = "/*"
 status = 200
-to = "/index.html"
+to = "src/index.html"
 
 [[headers]]
 for = "/*"

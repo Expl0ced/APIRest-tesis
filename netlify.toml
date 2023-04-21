@@ -1,15 +1,12 @@
 [build]
-publish = "/"
-command = "npm start" 
-functions = "src/routes"
-
+command = "npm start"
 
 [[redirects]]
-from = "/*"
+from = "/api/*"
 status = 200
-to = "src/index.html"
+to = "/api/:splat"
 
 [[headers]]
 for = "/*"
 [headers.values]
-Access-Control-Allow-Origin = "*"
+Access-Control-Allow-Origin = "https://healthyfoodpage.netlify.app/"

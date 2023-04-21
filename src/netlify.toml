@@ -1,11 +1,11 @@
 [build]
-functions="src/*"
+functions="/routes"
 publish = "/"
 
 [[redirects]]
 from = "/api/*"
 status = 200
-to = "src/index.html"
+to = "/index.html"
 
 [[headers]]
 for = "/*"

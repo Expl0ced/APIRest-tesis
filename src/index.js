@@ -11,16 +11,19 @@ app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-app.use(express.json());
-app.use(bodyparser.json());
-app.use(cors({
-    origin: '*'
-}));
+var corsOptions = {
+    origin: ['https://healthyfoodpage.netlify.app', 'localhost:4200'],
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+app.use(express.json());
+app.use(bodyparser.json());
+
 app.use(bodyparser.urlencoded({
     extended: true
 }));

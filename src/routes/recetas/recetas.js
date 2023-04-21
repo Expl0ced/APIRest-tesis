@@ -7,7 +7,7 @@ const cors = require('cors');
 const mysqlConnection = require('../../database.js');
 
 var corsOptions = {
-    origin: 'https://apihealthyfood.netlify.app',
+    origin: ['https://healthyfoodpage.netlify.app', 'localhost:4200'],
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
+const cors = require('cors');
 const mysqlConnection  = require('../../database.js');
     
-router.get('/:id', (req, res)=>{
+router.get('/:id', cors(), (req, res)=>{
     const { id } = req.params;
     mysqlConnection.query("SELECT idUser ,Nombre, Apellido, Email FROM usuarios WHERE idUser=?", [id], (err, rows, fields)=>{
         if(!err){
@@ -13,7 +13,7 @@ router.get('/:id', (req, res)=>{
         }
     })  
 });
-router.post('/',(req, res)=>{
+router.post('/', cors(),(req, res)=>{
     const { idOrden, nombreNutri,apellidoNutri,idClienteNutri } = req.body;
     const query = "CALL Asignacion(?,?,?,?)";
     mysqlConnection.query(query, [ idOrden, nombreNutri,apellidoNutri,idClienteNutri ], (err, rows, fields)=>{
@@ -26,7 +26,7 @@ router.post('/',(req, res)=>{
     });
 })
 
-router.get('/', (req, res) => {
+router.get('/', cors(), (req, res) => {
     mysqlConnection.query("SELECT idUser, Nombre, Apellido, Sintomas, Peso, Altura, Img, IMC, Genero FROM usuarios WHERE (Asignado is null or Asignado='No') and (Rol='usuario' or Rol='admin');",(err, rows, fields) => {
     if(!err) {
         res.json(rows);
@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
     }
     });  
 });
-router.put('/:id', (req, res)=>{
+router.put('/:id', cors(), (req, res)=>{
     const { idOrden, Nombre, Apellido, apellidoNutri, nombreNutri, idUser } = req.body;
     const query = "CALL Asignacion(?,?,?,?,?,?)";
     mysqlConnection.query(query, [ idOrden, Nombre, Apellido, apellidoNutri, nombreNutri, idUser ], (err, rows, fields)=>{

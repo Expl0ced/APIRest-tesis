@@ -2,11 +2,12 @@
 
 const express = require('express');
 const router = express.Router();
+const cors = require('cors');
 
 const mysqlConnection = require('../../database.js');
 
 // GET all recetas
-router.get('/', (req, res) => {
+router.get('/', cors(), (req, res) => {
     mysqlConnection.query('SELECT * FROM recetas', (err, rows, fields) => {
         if (!err) {
             res.json(rows);
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/:id', (req, res) => {
+router.get('/:id', cors(), (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('SELECT * FROM recetas WHERE IdReceta=?', [id], (err, rows, fields) => {
         if (!err) {
@@ -28,7 +29,7 @@ router.get('/:id', (req, res) => {
         }
     })
 });
-router.get('/ultima/ingreso', (req, res) => {
+router.get('/ultima/ingreso', cors(), (req, res) => {
     mysqlConnection.query('select IdReceta from recetas ORDER BY IdReceta DESC LIMIT 1;', (err, rows, fields) => {
         console.log(req.body)
         if (!err) {
@@ -39,7 +40,7 @@ router.get('/ultima/ingreso', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
+router.post('/', cors(), (req, res) => {
     const { IdReceta, Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta } = req.body;
     const query = "CALL recetasADDorEDIT(?, ?, ?, ?, ?, ?, ? ,?)";
     mysqlConnection.query(query, [IdReceta, Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta], (err, rows, fields) => {
@@ -52,7 +53,7 @@ router.post('/', (req, res) => {
     });
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', cors(), (req, res) => {
     const { Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta } = req.body;
     const { Id } = req.params;
     // const query ="UPDATE employees SET name=?, salary=? WHERE id=?"
@@ -67,7 +68,7 @@ router.put('/:id', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', cors(), (req, res) => {
     const { Id } = req.params;
     mysqlConnection.query('DELETE FROM recetas WHERE id=?', [Id], (err, rows, fields) => {
         if (!err) {

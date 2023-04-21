@@ -1,10 +1,10 @@
 const express=require('express');
 const router=express.Router();
-
+const cors = require('cors');
 const mysqlConnection  = require('../../database.js');
 const jwt =require('jsonwebtoken')
 
-router.post('/', (req,res)=>{
+router.post('/', cors(), (req,res)=>{
     const { email, pass }= req.body;
     mysqlConnection.query('select idUser ,Email, Rol, Nombre, Apellido from usuarios where Email=? and Password=?',
     [email, pass],
@@ -24,7 +24,7 @@ router.post('/', (req,res)=>{
     })
 })
 
-router.post('/test', verifyToken,(req, res)=>{
+router.post('/test', cors(), verifyToken,(req, res)=>{
     res.json('Informacion secreta');
 })
 

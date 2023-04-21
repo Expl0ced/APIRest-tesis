@@ -11,11 +11,17 @@ app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-var corsOptions = {
-    origin: ['https://healthyfoodpage.netlify.app', 'localhost:4200'],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-app.use(cors(corsOptions));
+const whitelist=['https://healthyfoodpage.netlify.app', 'localhost:4200'];
+app.use(cors({
+    origin: function(origin, callback){
+        if(!origin) return callback(null, true);
+        if(whitelist.indexOf(origin)=== -1){
+            let msg='Los cors no estan ready'
+            return callback(null, true);
+        }
+        return callback(null, true);
+    }
+}));
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

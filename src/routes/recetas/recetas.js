@@ -11,7 +11,7 @@ router.get('/', cors(), (req, res) => {
     mysqlConnection.query('SELECT * FROM recetas', (err, rows, fields) => {
         if (!err) {
             res.json(rows);
-            res.send(rows);
+            console.log(res)
         } else {
             console.log(err);
         }

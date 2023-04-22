@@ -7,6 +7,6 @@ status = 200
 to = "/api/:splat"
 
 [[headers]]
-for = "/*"
+for = ""
 [headers.values]
 Access-Control-Allow-Origin = "https://healthyfoodpage.netlify.app/"

@@ -7,7 +7,7 @@ const cors = require('cors');
 const mysqlConnection = require('../../database.js');
 
 var corsOptions = {
-    origin: ['https://healthyfoodpage.netlify.app/', 'localhost:4200'],
+    origin: ['https://healthyfoodpage.netlify.app/', 'localhost:4200'], 
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -83,5 +83,9 @@ router.delete('/:id', cors(corsOptions), (req, res) => {
     });
 });
 
+fetch('/api/recetas')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error))
 
 module.exports = router;

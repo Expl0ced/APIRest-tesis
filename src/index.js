@@ -11,20 +11,22 @@ app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-const whitelist=['https://healthyfoodpage.netlify.app', 'localhost:4200'];
+const whitelist = ['https://healthyfoodpage.netlify.app', 'localhost:4200'];
+app.use('/api', function (req, res, next) {
+    res.json({
+        message: 'This is your API response!'
+    });
+    console.log("TU api esta hecha por un mamahuevo")
+});
 app.use(cors({
-    origin: function(origin, callback){
-        if(!origin) return callback(null, true);
-        if(whitelist.indexOf(origin)=== -1){
-            let msg='Los cors no estan ready'
-            return callback(null, true);
-        }
-        return callback(null, true);
-    }
+    origin: '*', // Permitir solicitudes de cualquier origen
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir solicitudes con estos métodos HTTP
+    allowedHeaders: ['Content-Type', 'Authorization'] // Permitir solicitudes con estos encabezados
 }));
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Content-Type", "application/json");
     next();
 });
 app.use(express.json());
@@ -34,8 +36,8 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 
-
 //endpoint archivos
+
 
 
 // Routes

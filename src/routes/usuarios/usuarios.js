@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const sendMail = require('C:/Users/explo/APIRest tesis/src/mailer.js')
+const sendMail = require('../../mailer.js')
 const cors = require('cors');
 
 const mysqlConnection = require('../../database.js');

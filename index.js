@@ -35,15 +35,13 @@ app.get('/', (req, res)=>{
 
 
 
-app.use('/api/login', require('./routes/login/login'), (req,res,next)=>{
-    res.status(200).send('not found')
-});
-app.use('/api/recetas', cors(), require('./routes/recetas/recetas'));
-app.use('/api/usuarios', cors(), require('./routes/usuarios/usuarios'));
-app.use('/api/orden_nutri', cors(), require('./routes/nutricionista/nutricionista'));
-app.use('/api/modificar_user', cors(), require('./routes/asignar_paciente/asignar_paciente'));
-app.use('/api/archivo', cors(), require('./routes/subidas/subidas'));
-app.use('/api/saverecipe', cors(), require('./routes/receta_guardada/receta_guardada'));
+app.use('/api/login', require('./src/routes/login/login'));
+app.use('/api/recetas', cors(), require('./src/routes/recetas/recetas'));
+app.use('/api/usuarios', cors(), require('./src/routes/usuarios/usuarios'));
+app.use('/api/orden_nutri', cors(), require('./src/routes/nutricionista/nutricionista'));
+app.use('/api/modificar_user', cors(), require('./src/routes/asignar_paciente/asignar_paciente'));
+app.use('/api/archivo', cors(), require('./src/routes/subidas/subidas'));
+app.use('/api/saverecipe', cors(), require('./src/routes/receta_guardada/receta_guardada'));
 
 // Cualquier otra ruta que no esté definida, devolverá un 404
 // app.use((req, res, next) => {

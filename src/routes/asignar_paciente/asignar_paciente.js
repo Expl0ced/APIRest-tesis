@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const cors = require('cors');
 const mysqlConnection  = require('../../database.js');
+
+
     
 router.get('/:id', cors(), (req, res)=>{
     const { id } = req.params;

@@ -5,6 +5,7 @@ const cors = require('cors');
 const mysqlConnection  = require('../../database.js');
 
 
+
 //get all ordenes
 router.get('/', cors(), (req, res) => {
     mysqlConnection.query('select idOrden, nombreNutri, apellidoNutri, nombreCliente, apellidoCliente, idClienteNutri, Genero, usuarios.Peso, usuarios.Altura, usuarios.IMC from usuarios join orden_nutri on (usuarios.Nombre=orden_nutri.nombreNutri and usuarios.Apellido=orden_nutri.apellidoNutri)', (err, rows, fields) => {

@@ -6,13 +6,11 @@ const cors = require('cors');
 
 const mysqlConnection = require('../../database.js');
 
-var corsOptions = {
-    origin: ['https://healthyfoodpage.netlify.app/', 'localhost:4200'], 
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+
+
 
 // GET all recetas
-router.get('/', cors(corsOptions), (req, res) => {
+router.get('/', cors(), (req, res) => {
     mysqlConnection.query('SELECT * FROM recetas', (err, rows, fields) => {
         if (!err) {
             res.json(rows);
@@ -25,7 +23,7 @@ router.get('/', cors(corsOptions), (req, res) => {
 });
 
 
-router.get('/:id', cors(corsOptions), (req, res) => {
+router.get('/:id', cors(), (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('SELECT * FROM recetas WHERE IdReceta=?', [id], (err, rows, fields) => {
         if (!err) {
@@ -35,7 +33,7 @@ router.get('/:id', cors(corsOptions), (req, res) => {
         }
     })
 });
-router.get('/ultima/ingreso', cors(corsOptions), (req, res) => {
+router.get('/ultima/ingreso', cors(), (req, res) => {
     mysqlConnection.query('select IdReceta from recetas ORDER BY IdReceta DESC LIMIT 1;', (err, rows, fields) => {
         console.log(req.body)
         if (!err) {
@@ -46,7 +44,7 @@ router.get('/ultima/ingreso', cors(corsOptions), (req, res) => {
     })
 });
 
-router.post('/', cors(corsOptions), (req, res) => {
+router.post('/', cors(), (req, res) => {
     const { IdReceta, Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta } = req.body;
     const query = "CALL recetasADDorEDIT(?, ?, ?, ?, ?, ?, ? ,?)";
     mysqlConnection.query(query, [IdReceta, Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta], (err, rows, fields) => {
@@ -59,7 +57,7 @@ router.post('/', cors(corsOptions), (req, res) => {
     });
 })
 
-router.put('/:id', cors(corsOptions), (req, res) => {
+router.put('/:id', cors(), (req, res) => {
     const { Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta } = req.body;
     const { Id } = req.params;
     // const query ="UPDATE employees SET name=?, salary=? WHERE id=?"
@@ -74,7 +72,7 @@ router.put('/:id', cors(corsOptions), (req, res) => {
 });
 
 
-router.delete('/:id', cors(corsOptions), (req, res) => {
+router.delete('/:id', cors(), (req, res) => {
     const { Id } = req.params;
     mysqlConnection.query('DELETE FROM recetas WHERE id=?', [Id], (err, rows, fields) => {
         if (!err) {
@@ -83,9 +81,5 @@ router.delete('/:id', cors(corsOptions), (req, res) => {
     });
 });
 
-fetch('/api/recetas')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error(error))
 
 module.exports = router;

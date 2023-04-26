@@ -6,6 +6,13 @@ const mysqlConnection = mysql.createConnection({
     password: 'iddp8prwfss26k9u',
     database: 'sij2vou7a0rrqrs9',
     multipleStatements: true
+
+    // host: 'localhost',
+    // user: 'exploced',
+    // password: '',
+    // database: 'recetas',
+    // multipleStatements: true
+
 });
 
 mysqlConnection.connect(function (err) {

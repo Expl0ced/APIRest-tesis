@@ -7,6 +7,8 @@ const cors = require('cors');
 
 const mysqlConnection = require('../../database.js');
 
+
+
 // GET all Employees
 router.get('/', cors(), (req, res) => {
     mysqlConnection.query('SELECT Nombre, Apellido, Rol, Email FROM usuarios', (err, rows, fields) => {

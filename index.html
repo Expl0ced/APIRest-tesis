@@ -1,1 +1,26 @@
-<h1>aaaaaaaaaaaaaaa</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Listado de recetas</title>
+</head>
+
+<body>
+    <h1>Listado de recetas</h1>
+    <ul id="recipe-list"></ul>
+    <script src="src/routes/recetas/"></script>
+    <script>
+        axios.get('grp6m5lz95d9exiz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com')
+            .then(response => {
+                const recipeList = document.getElementById('recipe-list');
+                response.data.forEach(recipe => {
+                    const listItem = document.createElement('li');
+                    listItem.innerText = recipe.name;
+                    recipeList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+
+</html>

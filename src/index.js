@@ -30,6 +30,13 @@ app.use(bodyparser.urlencoded({
 
 
 // Routes
+
+app.get('/', (req, res)=>{
+    res.send('Bienvenidos a mi API')
+})
+
+
+
 app.use('/api/login', require('./routes/login/login'), (req,res,next)=>{
     res.status(200).send('not found')
 });

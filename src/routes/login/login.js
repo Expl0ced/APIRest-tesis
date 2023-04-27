@@ -5,7 +5,6 @@ const mysqlConnection = require('../../database.js');
 const jwt = require('jsonwebtoken')
 
 router.post('/', (req, res) => {
-    res.send("este es el login")
     const { email, pass } = req.body;
     mysqlConnection.query(
         'select idUser, Email, Rol, Nombre, Apellido from usuarios where Email = ? and Password = ?',

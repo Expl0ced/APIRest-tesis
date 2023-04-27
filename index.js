@@ -9,7 +9,7 @@ app.set('port', process.env.PORT || 3000);
 
 // Middlewares
 app.use(cors({  
-    origin: 'http://localhost:4200', // Permitir solicitudes desde estos dos orígenes
+    origin: 'http://127.0.0.1:4200', // Permitir solicitudes desde estos dos orígenes
     methods: ["GET","PUT","POST","DELETE"], // Permitir solicitudes con estos métodos HTTP
     allowedHeaders: ['Content-Type', 'Authorization'], // Permitir solicitudes con estos encabezados
     optionsSuccessStatus: 200

@@ -14,6 +14,12 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'], // Reemplaza con los encabezados que necesitas
     credentials: true // Habilita el envío de cookies de origen cruzado
 }));
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    next();
+});
 
 app.use(express.json());
 app.use(bodyparser.urlencoded({

@@ -11,6 +11,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // Actualiza "*"" con el dominio de tu frontend
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Max-Age', 86400)
     next();
 });
 app.use(cors({  

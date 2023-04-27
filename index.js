@@ -12,8 +12,7 @@ app.use(cors({
     origin: '*', // Permitir solicitudes desde estos dos orígenes
     methods: ["GET","PUT","POST","DELETE"], // Permitir solicitudes con estos métodos HTTP
     allowedHeaders: ['Origin', 'X-Requested-With',' Content-Type', 'Accept','Authorization'], // Permitir solicitudes con estos encabezados
-    credentials: true,
-    optionsSuccessStatus: 200
+
 }));
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*"); // Actualiza "*"" con el dominio de tu frontend

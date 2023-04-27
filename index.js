@@ -8,21 +8,20 @@ app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-// app.use(cors({  
-//     origin: 'http://127.0.0.1:4200', // Permitir solicitudes desde estos dos orígenes
-//     methods: ["GET","PUT","POST","DELETE"], // Permitir solicitudes con estos métodos HTTP
-//     allowedHeaders: ['Content-Type', 'Authorization'], // Permitir solicitudes con estos encabezados
-//     credentials: true,
-//     optionsSuccessStatus: 200
-// }));
+app.use(cors({  
+    origin: '*', // Permitir solicitudes desde estos dos orígenes
+    methods: ["GET","PUT","POST","DELETE"], // Permitir solicitudes con estos métodos HTTP
+    allowedHeaders: ['Origin', 'X-Requested-With',' Content-Type', 'Accept','Authorization'], // Permitir solicitudes con estos encabezados
+    credentials: true,
+    optionsSuccessStatus: 200
+}));
 // app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "http://127.0.0.1:4200"); // Actualiza "*"" con el dominio de tu frontend
+//     res.header("Access-Control-Allow-Origin", "*"); // Actualiza "*"" con el dominio de tu frontend
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     res.header('Access-Control-Max-Age', 86400)
 //     next();
 // });
 
-app.use(cors())
 app.use(express.json());
 app.use(bodyparser.urlencoded({
     extended: true

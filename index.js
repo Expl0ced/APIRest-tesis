@@ -2,22 +2,18 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
 
-const app = express();
+constapp = express();
 // Settings
 app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-app.use(cors({
+app.use(cors({  
     origin: ['http://localhost:4200', 'https://healthyfoodpage.netlify.app'], // Permitir solicitudes desde estos dos orígenes
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir solicitudes con estos métodos HTTP
-    allowedHeaders: ['Content-Type', 'Authorization'] // Permitir solicitudes con estos encabezados
+    methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"], // Permitir solicitudes con estos métodos HTTP
+    allowedHeaders: ['Content-Type', 'Authorization'], // Permitir solicitudes con estos encabezados
+    preflightContinue: false,
 }));
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // Actualiza "*"" con el dominio de tu frontend
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 app.use(express.json());
 app.use(bodyparser.urlencoded({
     extended: true
@@ -35,7 +31,7 @@ app.get('/', (req, res)=>{
 
 
 
-app.use('/api/login', require('./src/routes/login/login'));
+app.use('/api/login',cors(), require('./src/routes/login/login'));
 app.use('/api/recetas', cors(), require('./src/routes/recetas/recetas'));
 app.use('/api/usuarios', cors(), require('./src/routes/usuarios/usuarios'));
 app.use('/api/orden_nutri', cors(), require('./src/routes/nutricionista/nutricionista'));

@@ -40,13 +40,13 @@ app.get('/', (req, res)=>{
 
 
 
-app.use('/api/login',cors(), require('./src/routes/login/login'));
-app.use('/api/recetas', cors(), require('./src/routes/recetas/recetas'));
-app.use('/api/usuarios', cors(), require('./src/routes/usuarios/usuarios'));
-app.use('/api/orden_nutri', cors(), require('./src/routes/nutricionista/nutricionista'));
-app.use('/api/modificar_user', cors(), require('./src/routes/asignar_paciente/asignar_paciente'));
-app.use('/api/archivo', cors(), require('./src/routes/subidas/subidas'));
-app.use('/api/saverecipe', cors(), require('./src/routes/receta_guardada/receta_guardada'));
+app.use('/api/login', require('./src/routes/login/login'));
+app.use('/api/recetas', require('./src/routes/recetas/recetas'));
+app.use('/api/usuarios', require('./src/routes/usuarios/usuarios'));
+app.use('/api/orden_nutri', require('./src/routes/nutricionista/nutricionista'));
+app.use('/api/modificar_user', require('./src/routes/asignar_paciente/asignar_paciente'));
+app.use('/api/archivo', require('./src/routes/subidas/subidas'));
+app.use('/api/saverecipe', require('./src/routes/receta_guardada/receta_guardada'));
 
 // Cualquier otra ruta que no esté definida, devolverá un 404
 // app.use((req, res, next) => {

@@ -8,16 +8,13 @@ app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-var corsOptions = {
-    origin: 'http://localhost:4200',
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    methods: ['GET', 'PUT', 'POST', 'DELETE'],
-    allowedHeaders:['Content-Type', 'Authorization'],
-    exposedHeaders: ['Content-Range', 'X-Content-Range'],
-    credentials: 'include',
-    optionsSuccessStatus: 200
-}
-app.use(cors(corsOptions))
+app.use(cors({
+    origin: 'http://localhost:4200', // Reemplaza con el origen de tu aplicación Angular
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Reemplaza con los métodos que necesitas
+    allowedHeaders: ['Content-Type', 'Authorization'], // Reemplaza con los encabezados que necesitas
+    credentials: true // Habilita el envío de cookies de origen cruzado
+}));
+
 app.use(express.json());
 app.use(bodyparser.urlencoded({
     extended: true
@@ -35,13 +32,13 @@ app.get('/', (req, res) => {
 
 
 
-app.use('/api/login', cors(corsOptions), require('./src/routes/login/login'));
-app.use('/api/recetas', cors(corsOptions), require('./src/routes/recetas/recetas'));
-app.use('/api/usuarios', cors(corsOptions), require('./src/routes/usuarios/usuarios'));
-app.use('/api/orden_nutri', cors(corsOptions), require('./src/routes/nutricionista/nutricionista'));
-app.use('/api/modificar_user',cors(corsOptions), require('./src/routes/asignar_paciente/asignar_paciente'));
-app.use('/api/archivo',cors(corsOptions), require('./src/routes/subidas/subidas'));
-app.use('/api/saverecipe',cors(corsOptions), require('./src/routes/receta_guardada/receta_guardada'));
+app.use('/api/login', cors(), require('./src/routes/login/login'));
+app.use('/api/recetas', cors(), require('./src/routes/recetas/recetas'));
+app.use('/api/usuarios', cors(), require('./src/routes/usuarios/usuarios'));
+app.use('/api/orden_nutri', cors(), require('./src/routes/nutricionista/nutricionista'));
+app.use('/api/modificar_user', cors(), require('./src/routes/asignar_paciente/asignar_paciente'));
+app.use('/api/archivo', cors(), require('./src/routes/subidas/subidas'));
+app.use('/api/saverecipe', cors(), require('./src/routes/receta_guardada/receta_guardada'));
 
 // Cualquier otra ruta que no esté definida, devolverá un 404
 // app.use((req, res, next) => {

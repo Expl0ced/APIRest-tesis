@@ -9,7 +9,7 @@ app.set('port', process.env.PORT || 3000);
 
 // Middlewares
 app.use(cors({
-    origin: "*", // Permitir solicitudes desde estos dos orígenes
+    origin: ['http://localhost:4200', 'https://healthyfoodpage.netlify.app'], // Permitir solicitudes desde estos dos orígenes
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir solicitudes con estos métodos HTTP
     allowedHeaders: ['Content-Type', 'Authorization'] // Permitir solicitudes con estos encabezados
 }));

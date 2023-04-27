@@ -12,6 +12,7 @@ app.use(cors({
     origin: 'http://127.0.0.1:4200', // Permitir solicitudes desde estos dos orígenes
     methods: ["GET","PUT","POST","DELETE"], // Permitir solicitudes con estos métodos HTTP
     allowedHeaders: ['Content-Type', 'Authorization'], // Permitir solicitudes con estos encabezados
+    credentials: true,
     optionsSuccessStatus: 200
 }));
 app.use(function(req, res, next) {

@@ -8,17 +8,18 @@ app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-app.use(cors({  
-    origin: ['http://localhost:4200/', 'https://healthyfoodpage.netlify.app'], // Permitir solicitudes desde estos dos orígenes
-    methods: ['GET','HEAD','PUT','PATCH','POST','DELETE', 'OPTIONS'], // Permitir solicitudes con estos métodos HTTP
-    allowedHeaders: ['Content-Type', 'Authorization'], // Permitir solicitudes con estos encabezados
-    optionsSuccessStatus: 200
-}));
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // Actualiza "*"" con el dominio de tu frontend
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+app.use(cors({  
+    origin: ['http://localhost:4200/', 'https://healthyfoodpage.netlify.app'], // Permitir solicitudes desde estos dos orígenes
+    methods: ['GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS'], // Permitir solicitudes con estos métodos HTTP
+    allowedHeaders: ['Content-Type', 'Authorization'], // Permitir solicitudes con estos encabezados
+    optionsSuccessStatus: 200
+}));
+
 app.use(express.json());
 app.use(bodyparser.urlencoded({
     extended: true

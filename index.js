@@ -12,8 +12,6 @@ app.use(cors({
     origin: ['http://localhost:4200', 'https://healthyfoodpage.netlify.app'], // Permitir solicitudes desde estos dos orígenes
     methods: ["GET","HEAD","PUT","PATCH","POST","DELETE","OPTIONS"], // Permitir solicitudes con estos métodos HTTP
     allowedHeaders: ['Content-Type', 'Authorization'], // Permitir solicitudes con estos encabezados
-    preflightContinue: false,
-    optionsSuccessStatus:204
 }));
 app.use(express.json());
 app.use(bodyparser.urlencoded({

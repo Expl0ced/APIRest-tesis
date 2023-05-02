@@ -13,7 +13,7 @@ app.use(cors({
     methods: 'GET,POST,DELETE,UPDATE,PUT,PATCH,HEAD,OPTIONS,CONNECT,TRACE', // Reemplaza con los métodos que necesitas
     allowedHeaders: 'Content-Type, Authorization', // Reemplaza con los encabezados que necesitas
     exposedHeaders: '*',
-    credentials: true // Habilita el envío de cookies de origen cruzado
+    credentials: false // Habilita el envío de cookies de origen cruzado
 }));
 
 app.use(express.json());

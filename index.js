@@ -10,7 +10,7 @@ app.set('port', process.env.PORT || 3000);
 // Middlewares
 app.use(cors({
     origin: '*', // Reemplaza con el origen de tu aplicación Angular
-    methods: 'GET,POST,DELETE,UPDATE,PUT,PATCH', // Reemplaza con los métodos que necesitas
+    methods: 'GET,POST,DELETE,UPDATE,PUT,PATCH,HEAD,OPTIONS,CONNECT,TRACE', // Reemplaza con los métodos que necesitas
     allowedHeaders: 'Content-Type, Authorization', // Reemplaza con los encabezados que necesitas
     exposedHeaders: '*',
     credentials: true // Habilita el envío de cookies de origen cruzado

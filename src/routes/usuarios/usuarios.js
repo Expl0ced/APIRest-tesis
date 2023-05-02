@@ -47,7 +47,7 @@ router.post('/', cors(), (req, res) => {
     const query = "CALL usuarioADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
     mysqlConnection.query(query, [idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async (err, rows, fields) => {
         if (!err) {
-            sendMail(Email)
+            // sendMail(Email)
             res.json({ Status: 'Usuario Guardado' })
         } else {
             console.log(err)

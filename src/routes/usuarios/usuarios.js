@@ -20,12 +20,17 @@ router.get('/', cors(), (req, res) => {
     });
 });
 
+router.get('/usuarioExists/', cors(), (req, res) => {
+    res.send("direccion valida")
+});
+
 router.get('/usuarioExists/:email/:password', cors(), (req, res) => {
     const { email, password } = req.params;
     mysqlConnection.query('SELECT Email, Password FROM usuarios WHERE Email=? and Password=?', [email, password], (err, rows, fields) => {
         if (!err) {
             res.json(rows);
         } else {
+            res.send("usuario ya creado")
             console.log(err);
         }
     });

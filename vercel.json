@@ -14,11 +14,13 @@
                 "GET",
                 "POST",
                 "PUT",
-                "DELETE"
+                "DELETE",
+                "UPDATE",
+                "PATCH"
             ],
             "headers": {
                 "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "Content-Type"
+                "Access-Control-Allow-Headers": ["Content-Type", "Authorization"]
             }
         }
     ]

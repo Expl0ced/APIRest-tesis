@@ -8,20 +8,13 @@ app.set('port', process.env.PORT || 3000);
 
 
 // Middlewares
-// app.use(cors({
-//     origin: 'http://localhost:4200', // Reemplaza con el origen de tu aplicación Angular
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Reemplaza con los métodos que necesitas
-//     allowedHeaders: ['Content-Type', 'Authorization'], // Reemplaza con los encabezados que necesitas
-//     credentials: true // Habilita el envío de cookies de origen cruzado
-// }));
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    next();
-});
+app.use(cors({
+    origin: '*', // Reemplaza con el origen de tu aplicación Angular
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'], // Reemplaza con los métodos que necesitas
+    allowedHeaders: ['Content-Type', 'Authorization'], // Reemplaza con los encabezados que necesitas
+    exposedHeaders: '*',
+    credentials: true // Habilita el envío de cookies de origen cruzado
+}));
 
 app.use(express.json());
 app.use(bodyparser.urlencoded({

@@ -48,7 +48,7 @@ router.post('/', cors(), (req, res) => {
     const { IdReceta, Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta } = req.body;
     const query = "CALL recetasADDorEDIT(?, ?, ?, ?, ?, ?, ? ,?)";
     mysqlConnection.query(query, [IdReceta, Encabezado, Ingredientes, Preparacion, Notas, Detalles, Imagen, Etiqueta], (err, rows, fields) => {
-        console.log(res)
+        console.log(req.body)
         if (!err) {
             res.json({ Status: 'Receta Ingresada' })
         } else {

@@ -61,7 +61,7 @@ router.post('/', cors(), (req, res) => {
     // sendMail(Email)
 })
 
-router.put('/:id', cors(), (req, res) => {
+router.put('/actualizar/:id', cors(), (req, res) => {
     const { Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero } = req.body;
     const { id } = req.params;
     const query = "CALL usuarioADDorEDIT(?,?,?,?,?,?,?,?,?,?,?)";

@@ -66,6 +66,7 @@ router.put('/actualizar/:id', cors(), (req, res) => {
     const { id } = req.params;
     const query = "CALL usuarioADDorEDIT(?,?,?,?,?,?,?,?,?,?,?)";
     mysqlConnection.query(query, [id, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero], (err, rows, fields) => {
+        console.log(res)
         if (!err) {
             res.json({ Status: 'Usuario Actualizado' });
         } else {

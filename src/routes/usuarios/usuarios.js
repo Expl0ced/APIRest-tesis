@@ -62,10 +62,10 @@ router.post('/', cors(), (req, res) => {
 })
 
 router.put('/actualizar/:id', cors(), (req, res) => {
-    const { Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero } = req.body;
+    const { Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica } = req.body;
     const { id } = req.params;
-    const query = "CALL usuarioADDorEDIT(?,?,?,?,?,?,?,?,?,?,?)";
-    mysqlConnection.query(query, [id, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero], (err, rows, fields) => {
+    const query = "CALL usuarioADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
+    mysqlConnection.query(query, [id, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], (err, rows, fields) => {
         console.log(res)
         if (!err) {
             res.json({ Status: 'Usuario Actualizado' });

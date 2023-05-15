@@ -89,11 +89,11 @@ router.put('/update-img/:id', (req, res)=>{
     const { imagen } = req.body;
     const { id } = req.params;
     console.log(imagen)
-    mysqlConnection.query("update usuarios, orden_nutri set usuarios.Img=?, usuarios.Img=orden.nutri.img where usuarios.idUser=? and usuarios.idUser = orden_nutri.idClienteNutri", [ imagen, id ], (err, rows, fields)=>{    
+    mysqlConnection.query("Call update_images(?,?)", [ imagen, id ], (err, rows, fields)=>{    
         console.log(req.body)
         if(!err){
             res.json({Status: 'Foto de Perfil Actualizada'});
-        }else{
+        }else{  
             console.log(err);
         }
     });

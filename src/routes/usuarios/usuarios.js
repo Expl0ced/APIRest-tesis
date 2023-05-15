@@ -85,5 +85,18 @@ router.delete('/:id', cors(), (req, res) => {
     });
 });
 
+router.put('/update-img/:id', (req, res)=>{    
+    const { imagen } = req.body;
+    const { id } = req.params;
+    console.log(imagen)
+    mysqlConnection.query("update usuarios set Img=? where idUser=?", [ imagen, id ], (err, rows, fields)=>{    
+        console.log(req.body)
+        if(!err){
+            res.json({Status: 'Foto de Perfil Actualizada'});
+        }else{
+            console.log(err);
+        }
+    });
+}); 
 
 module.exports = router;  

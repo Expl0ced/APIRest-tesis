@@ -1,28 +1,75 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const mysqlConnection  = require('../../database.js');
+const mysqlConnection = require('../../database.js');
 
 router.get('/:id', cors(), (req, res) => {
     const { id } = req.params;
-    mysqlConnection.query('select id, nombre, imagen, fecha_creacion, idUser from files where idUser=?',[ id ], (err, rows, fields) => {
-        if(!err) {
+    mysqlConnection.query('select id, nombre, imagen, fecha_creacion, idUser from files where idUser=?', [id], (err, rows, fields) => {
+        if (!err) {
             res.json(rows);
         } else {
             console.log(err);
         }
-    });  
+    });
 });
 
 router.get('/cuenta/:id', cors(), (req, res) => {
     const { id } = req.params;
-    mysqlConnection.query('select count(id) from files where idUser=?',[ id ], (err, rows, fields) => {
+    mysqlConnection.query('select count(id) from files where idUser=?', [id], (err, rows, fields) => {
         console.log(res)
-        if(!err) {
+        if (!err) {
             res.json(rows);
         } else {
             console.log(err);
         }
-    });  
+    });
 });
-module.exports=router;
+
+router.post('/subir-Archivo/', cors(), (req, res) => {
+    const { nombre, imagen, fecha_creacion, idUser } = req.body;
+
+    mysqlConnection.query('INSERT INTO files (nombre, imagen, fecha_creacion, idUser) VALUES (?,?,?,?)', [nombre, imagen, fecha_creacion, idUser], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'Archivo Subido' })
+        }
+        else {
+            console.log(err)
+        }
+    })
+})
+
+// router.put('/actualizar/:id', cors(), (req, res) => {
+//     const { id, Img } = req.body;
+//     const query = "update usuarios set Img=? where idUser=?;";
+//     mysqlConnection.query(query, [Img, id ], (err, rows, fields) => {
+//         console.log(req.body)
+//         if (!err) {
+//             res.json({ Status: 'Foto de Perfil Actualizada'});
+//         } else {
+//             console.log(err);
+//         }
+//     });
+// });
+
+router.put('/:id', (req, res)=>{    
+    const { imagen } = req.body;
+    const { id } = req.params;
+    console.log(imagen)
+    mysqlConnection.query("update usuarios set Img=? where idUser=?", [ imagen, id ], (err, rows, fields)=>{
+        console.log(req.body)
+        if(!err){
+            res.json({Status: 'Foto de Perfil Actualizada'});
+        }else{
+            console.log(err);
+        }
+    });
+}); 
+
+router.put('/prueba/:id', (req, res)=>{    
+    const { imagen } = req.body;
+    const { id } = req.params;
+    console.log(imagen)
+}); 
+
+module.exports = router;

@@ -5,7 +5,7 @@ const mysqlConnection = require('../../database.js');
 
 router.get('/:id', cors(), (req, res) => {
     const { id } = req.params;
-    mysqlConnection.query('select id, nombre, imagen, fecha_creacion, idUser from files where idUser=?', [id], (err, rows, fields) => {
+    mysqlConnection.query("SELECT id, nombre, imagen, fecha_creacion, idUser, nutri_n, nutri_ape FROM files WHERE idUser = 12 AND STR_TO_DATE(fecha_creacion, '%d/%m/%y') BETWEEN CURDATE() - INTERVAL 1 MONTH AND CURDATE() ORDER BY STR_TO_DATE(fecha_creacion, '%d/%m/%y') ASC LIMIT 3", [id], (err, rows, fields) => {
         if (!err) {
             res.json(rows);
         } else {

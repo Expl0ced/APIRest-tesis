@@ -29,7 +29,7 @@ router.get('/cuenta/:id', cors(), (req, res) => {
 router.post('/subir-Archivo/', cors(), (req, res) => {
     const { nombre, imagen, fecha_creacion, idUser } = req.body;
 
-    mysqlConnection.query('INSERT INTO files (nombre, imagen, fecha_creacion, idUser) VALUES (?,?,?,?)', [nombre, imagen, fecha_creacion, idUser], (err, rows, fields) => {
+    mysqlConnection.query('INSERT INTO files (nombre, imagen, fecha_creacion, idUser, nutri_n, nutri_ape) VALUES (?,?,?,?,?,?)', [nombre, imagen, fecha_creacion, idUser], (err, rows, fields) => {
         if (!err) {
             res.json({ Status: 'Archivo Subido' })
         }

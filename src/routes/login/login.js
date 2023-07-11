@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 router.post('/nutri', (req, res) => {
     const { email, pass } = req.body;
     mysqlConnection.query(
-        'select idUNutri, EmailNutri, RolNutri, NombreNutri, ApellidoNutri from nutricionistas where EmailNutri = ? and PasswordNutri = ?',
+        'select idNutri, EmailNutri, RolNutri, NombreNutri, ApellidoNutri from nutricionistas where EmailNutri = ? and PasswordNutri = ?',
         [email, pass],
         (err, rows, fields) => {
             if (err) {

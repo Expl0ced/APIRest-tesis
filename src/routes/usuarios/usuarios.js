@@ -58,7 +58,7 @@ router.post('/', cors(), (req, res) => {
             console.log(err)
         }
     })
-    const query2 = "CALL nutriADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
+    const query2 = "CALL nutriADDorEDIT(?,?,'nutricionista',?,?,?,?,?,?,?,?,?)";
     mysqlConnection.query(query2, [idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async(err, rows, fields) => {
         if(!err){
             res.json({Status: "Nutricionista Guardado "})

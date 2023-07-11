@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
     );
 });
 
-router.post('/nutri', (req, res) => {
+router.post('/nutri',cors(), (req, res) => {
     const { email, pass } = req.body;
     mysqlConnection.query(
         'select idNutri, EmailNutri, RolNutri, NombreNutri, ApellidoNutri from nutricionistas where EmailNutri = ? and PasswordNutri = ?',

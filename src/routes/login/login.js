@@ -26,6 +26,28 @@ router.post('/', (req, res) => {
     );
 });
 
+router.post('/nutri', (req, res) => {
+    const { email, pass } = req.body;
+    mysqlConnection.query(
+        'select idUNutri, EmailNutri, RolNutri, NombreNutri, ApellidoNutri from usuarios where EmailNutri = ? and PasswordNutri = ?',
+        [email, pass],
+        (err, rows, fields) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Error en la consulta a la base de datos' });
+            }
+
+            if (rows.length > 0) {
+                const data = JSON.stringify(rows[0]);
+                const token = jwt.sign(data, 'stil');
+                return res.json({ token });
+            } else {
+                return res.status(401).json({ error: 'Email o Contraseña incorrectos' });
+            }
+        }
+    );
+});
+
 router.post('/test', verifyToken, (req, res) => {
     res.json('Informacion secreta');
 })

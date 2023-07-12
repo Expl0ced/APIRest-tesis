@@ -30,7 +30,7 @@ router.post('/', cors(),(req, res)=>{
 
 router.get('/listado/:id', cors(), (req, res) => {
     const { id } = req.params;
-    mysqlConnection.query("SELECT idUser, Nombre, Apellido, Sintomas, Peso, Altura, Img, IMC, Genero FROM usuarios WHERE (Asignado is null or Asignado='No') and (Rol='usuario' or Rol='admin') and (idUser<>?)",(err, rows, fields) => {
+    mysqlConnection.query("SELECT idUser, Nombre, Apellido, Sintomas, Peso, Altura, Img, IMC, Genero FROM usuarios WHERE (Asignado is null or Asignado='No') and (Rol='usuario' or Rol='admin') and (idUser<>?)",[id],(err, rows, fields) => {
     if(!err) {  
         res.json(rows);
     } else {

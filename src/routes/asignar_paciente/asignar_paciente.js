@@ -16,9 +16,9 @@ router.get('/:id', cors(), (req, res)=>{
     })  
 });
 router.post('/', cors(),(req, res)=>{
-    const { idOrden, nombreNutri,apellidoNutri,idClienteNutri } = req.body;
+    const { idOrden, nombreNutri,apellidoNutri,idClienteNutri, idNutri } = req.body;
     const query = "CALL Asignacion(?,?,?,?,?)";
-    mysqlConnection.query(query, [ idOrden, nombreNutri,apellidoNutri,idClienteNutri ], (err, rows, fields)=>{
+    mysqlConnection.query(query, [ idOrden, nombreNutri,apellidoNutri,idClienteNutri, idNutri ], (err, rows, fields)=>{
         if(!err){
             console.log(req.body)
             res.json({Status:'Usuario Guardado'})

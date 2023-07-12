@@ -28,9 +28,9 @@ router.post('/', cors(),(req, res)=>{
     });
 })
 
-router.get('/', cors(), (req, res) => {
-    mysqlConnection.query("SELECT idUser, Nombre, Apellido, Sintomas, Peso, Altura, Img, IMC, Genero FROM usuarios WHERE (Asignado is null or Asignado='No') and (Rol='usuario' or Rol='admin');",(err, rows, fields) => {
-    if(!err) {
+router.get('/listado/:id', cors(), (req, res) => {
+    mysqlConnection.query("SELECT idUser, Nombre, Apellido, Sintomas, Peso, Altura, Img, IMC, Genero FROM usuarios WHERE (Asignado is null or Asignado='No') and (Rol='usuario' or Rol='admin') and idUser!=?;",(err, rows, fields) => {
+    if(!err) {  
         res.json(rows);
     } else {
         console.log(err);

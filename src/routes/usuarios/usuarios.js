@@ -81,7 +81,16 @@ router.put('/actualizar/:id', cors(), (req, res) => {
         } else {
             console.log(err);
         }
-    });
+    })
+    const query2 = "CALL nutriADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
+    mysqlConnection.query(query2, [id, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async(err, rows, fields) => {
+        if(!err){
+            res.json({Status: "Nutricionista Actualizado "})
+        } else{
+            console.log(err)
+        }
+    }
+    );;
 });
 
 

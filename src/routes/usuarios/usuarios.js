@@ -118,11 +118,19 @@ router.put('/update-img/:id', (req, res) => {
 router.put('/update-imgNutri/:id', (req, res) => {
     const { imagen } = req.body;
     const { id } = req.params;
-    mysqlConnection.query("CALL update-imagesNutria(?, ?)", [id, imagen], (err, rows, fields) => {
+    mysqlConnection.query("CALL update_imagesNutria(?, ?)", [id, imagen], (err, rows, fields) => {
         if (!err) {
             res.json({ Status: 'Foto de Nutria Actualizada' });
         } else {
             console.log(err);
+        }
+    });
+});
+router.delete('/asignacion/:id', cors(), (req, res) => {
+    const { id } = req.params;
+    mysqlConnection.query('call borrar_paciente(?)', [id], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'Usuario Borrado' });
         }
     });
 });

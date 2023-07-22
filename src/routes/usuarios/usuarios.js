@@ -59,10 +59,10 @@ router.post('/', cors(), (req, res) => {
         }
     })
     const query2 = "CALL nutriADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
-    mysqlConnection.query(query2, [idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async(err, rows, fields) => {
-        if(!err){
-            res.json({Status: "Nutricionista Guardado "})
-        } else{
+    mysqlConnection.query(query2, [idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: "Nutricionista Guardado " })
+        } else {
             console.log(err)
         }
     }
@@ -83,10 +83,10 @@ router.put('/actualizar/:id', cors(), (req, res) => {
         }
     })
     const query2 = "CALL nutriADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
-    mysqlConnection.query(query2, [id, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async(err, rows, fields) => {
-        if(!err){
-            res.json({Status: "Nutricionista Actualizado "})
-        } else{
+    mysqlConnection.query(query2, [id, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: "Nutricionista Actualizado " })
+        } else {
             console.log(err)
         }
     }
@@ -103,18 +103,28 @@ router.delete('/:id', cors(), (req, res) => {
     });
 });
 
-router.put('/update-img/:id', (req, res)=>{    
+router.put('/update-img/:id', (req, res) => {
     const { imagen } = req.body;
     const { id } = req.params;
-    console.log(imagen)
-    mysqlConnection.query("Call update_images(?,?)", [ id, imagen ], (err, rows, fields)=>{    
+    mysqlConnection.query("Call update_images(?,?)", [id, imagen], (err, rows, fields) => {
         console.log(req.body)
-        if(!err){
-            res.json({Status: 'Foto de Perfil Actualizada'});
-        }else{  
+        if (!err) {
+            res.json({ Status: 'Foto de Perfil Actualizada' });
+        } else {
             console.log(err);
         }
     });
-}); 
+});
+router.put('/update-imgNutri/:id', (req, res) => {
+    const { imagen } = req.body;
+    const { id } = req.params;
+    mysqlConnection.query("CALL update-imagesNutria(?, ?)", [id, imagen], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'Foto de Nutria Actualizada' });
+        } else {
+            console.log(err);
+        }
+    });
+});
 
 module.exports = router;  

@@ -130,7 +130,9 @@ router.delete('/asignacion/:id', cors(), (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('call borrar_paciente(?)', [id], (err, rows, fields) => {
         if (!err) {
-            res.json({ Status: 'Usuario Borrado' });
+            res.json({ Status: 'Asignacion Eliminada' });
+        }else {
+            console.log(err);
         }
     });
 });

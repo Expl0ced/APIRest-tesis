@@ -68,10 +68,11 @@ router.post('/', cors(), (req, res) => {
     })
 });
 router.post('/registro_nutria/', cors(), (req, res) => {
+    const { idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica } = req.body
     const query2 = "CALL nutriADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
     mysqlConnection.query(query2, [idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async (err, rows, fields) => {
         if (!err) {
-            res.json({ Status: "Nutricionista Guardado " })
+            res.json({ Status: "Nutricionista Guardado"})
         } else {
             console.log(err)
         }

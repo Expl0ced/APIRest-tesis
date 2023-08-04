@@ -29,4 +29,5 @@ router.get('/nombre/:nombre/apellido/:apellido', cors(), (req, res) => {
         }
     });  
 });
+
 module.exports=router;

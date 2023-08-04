@@ -50,6 +50,7 @@ router.get('/:id', cors(), (req, res) => {
 router.post('/', cors(), (req, res) => {
     const { idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica } = req.body;
     const query = "CALL usuarioADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
+    const query2 = "CALL EliminarRegistroMasViejo()";
     mysqlConnection.query(query, [idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async (err, rows, fields) => {
         if (!err) {
             sendMail(Email)
@@ -58,6 +59,15 @@ router.post('/', cors(), (req, res) => {
             console.log(err)
         }
     })
+    mysqlConnection.query(query2, async (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: "Registro Mas Antiguo, IMC y Peso, Eliminado" })
+        } else {
+            console.log(err)
+        }
+    })
+});
+router.post('/registro_nutria/', cors(), (req, res) => {
     const query2 = "CALL nutriADDorEDIT(?,?,?,?,?,?,?,?,?,?,?,?)";
     mysqlConnection.query(query2, [idUser, Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica], async (err, rows, fields) => {
         if (!err) {
@@ -67,8 +77,7 @@ router.post('/', cors(), (req, res) => {
         }
     }
     );
-    // sendMail(Email)
-})
+});
 
 router.put('/actualizar/:id', cors(), (req, res) => {
     const { Nombre, Apellido, Rol, Email, Password, Sintomas, Img, Peso, Altura, Genero, Contex_Fisica } = req.body;
@@ -131,7 +140,7 @@ router.delete('/asignacion/:id', cors(), (req, res) => {
     mysqlConnection.query('call borrar_paciente(?)', [id], (err, rows, fields) => {
         if (!err) {
             res.json({ Status: 'Asignacion Eliminada' });
-        }else {
+        } else {
             console.log(err);
         }
     });

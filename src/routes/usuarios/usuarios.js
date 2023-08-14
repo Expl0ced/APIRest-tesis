@@ -151,7 +151,19 @@ router.get('/peso_historico/:id', cors(), (req, res) => {
     const query2 = "Call viewPeso(?)";
     mysqlConnection.query(query2, [id], async (err, rows, fields) => {
         if (!err) {
-            res.json({ Status: "Datos históricos obtenidos"})
+            res.json(rows[0]);
+        } else {
+            console.log(err)
+        }
+    }
+    );
+});
+router.get('/imc_historico/:id', cors(), (req, res) => {
+    const { id } = req.params
+    const query2 = "Call viewIMC(?)";
+    mysqlConnection.query(query2, [id], async (err, rows, fields) => {
+        if (!err) {
+            res.json(rows[0]);
         } else {
             console.log(err)
         }

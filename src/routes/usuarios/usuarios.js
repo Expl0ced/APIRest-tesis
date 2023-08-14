@@ -146,5 +146,17 @@ router.delete('/asignacion/:id', cors(), (req, res) => {
         }
     });
 });
+router.get('/peso_historico/:id', cors(), (req, res) => {
+    const { id } = req.params
+    const query2 = "Call viewPeso(?)";
+    mysqlConnection.query(query2, [id], async (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: "Datos históricos obtenidos"})
+        } else {
+            console.log(err)
+        }
+    }
+    );
+});
 
 module.exports = router;  

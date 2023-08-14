@@ -1,0 +1,119 @@
+Persona 1:
+Nombre: Ana
+Apellido: García
+Rol: usuario
+Email: ana@gmail.com
+Password: securepass1
+Sintomas: Problemas de digestión
+Peso: 60 kg
+Altura: 165 cm
+Genero: femenino
+Contexto físico: Ectomorfo
+
+Persona 2:
+Nombre: Juan
+Apellido: López
+Rol: usuario
+Email: juan@gmail.com
+Password: mypass123!
+Sintomas: Baja energía
+Peso: 75 kg
+Altura: 180 cm
+Genero: masculino
+Contexto físico: Mesomorfo
+
+Persona 3:
+Nombre: Andrea
+Apellido: Rodríguez
+Rol: usuario
+Email: andrea@gmail.com
+Password: strongpw456
+Sintomas: Dificultad para concentrarse
+Peso: 55 kg
+Altura: 160 cm
+Genero: femenino
+Contexto físico: Endomorfo
+
+Persona 4:
+Nombre: Alex
+Apellido: Smith
+Rol: usuario
+Email: alex@gmail.com
+Password: secret789word
+Sintomas: Problemas de sueño
+Peso: 70 kg
+Altura: 175 cm
+Genero: no binario
+Contexto físico: Mesomorfo
+
+Persona 5:
+Nombre: María
+Apellido: Martínez
+Rol: usuario
+Email: maria@gmail.com
+Password: privates1ecure
+Sintomas: Sensibilidad alimentaria
+Peso: 62 kg
+Altura: 170 cm
+Genero: femenino
+Contexto físico: Ectomorfo
+
+Persona 6:
+Nombre: Carlos
+Apellido: Pérez
+Rol: usuario
+Email: carlos@gmail.com
+Password: passcode4321
+Sintomas: Estreñimiento ocasional
+Peso: 80 kg
+Altura: 185 cm
+Genero: masculino
+Contexto físico: Endomorfo
+
+Persona 7:
+Nombre: Alexia
+Apellido: Johnson
+Rol: usuario
+Email: alexia@gmail.com
+Password: my7secret89
+Sintomas: Desequilibrio hormonal
+Peso: 58 kg
+Altura: 163 cm
+Genero: femenino
+Contexto físico: Mesomorfo
+
+Persona 8:
+Nombre: Sam
+Apellido: Brown
+Rol: usuario
+Email: sam@gmail.com
+Password: secureand1safe
+Sintomas: Alergias alimentarias
+Peso: 68 kg
+Altura: 178 cm
+Genero: no binario
+Contexto físico: Mesomorfo
+
+Persona 9:
+Nombre: Laura
+Apellido: Davis
+Rol: usuario
+Email: laura@gmail.com
+Password: protected1pw
+Sintomas: Falta de energía
+Peso: 57 kg
+Altura: 162 cm
+Genero: femenino
+Contexto físico: Ectomorfo
+
+Persona 10:
+Nombre: Max
+Apellido: Martinez
+Rol: usuario
+Email: max@gmail.com
+Password: max4secure56
+Sintomas: Problemas de digestión
+Peso: 75 kg
+Altura: 180 cm
+Genero: otros
+Contexto físico: Mesomorfo

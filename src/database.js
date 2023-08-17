@@ -7,10 +7,10 @@ const mysqlConnection = mysql.createConnection({
     // database: 'sij2vou7a0rrqrs9',
     // multipleStatements: true
 
-    host: 'sql10.freemysqlhosting.net',
-    user: 'sql10640232',
-    password: 'i5lXVdmqrk',
-    database: 'sql10640232',
+    host: 'u6354r3es4optspf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'iz5z3aedeezw1yim',
+    password: 'w4xmhu43rb5jqgzc',
+    database: 'btg6twx38yp1xdwm',
     multipleStatements: true
 
 });

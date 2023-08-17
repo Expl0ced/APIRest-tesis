@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 router.post('/', (req, res) => {
     const { email, pass } = req.body;
     mysqlConnection.query(  
-        'select idUser, nutria.idNutri, Email, Rol, Nombre, Apellido from usuarios join nutricionistas nutria on usuarios.Email=nutria.EmailNutri and usuarios.Password=nutria.PasswordNutri where Email =? and Password = ?',
+        'select idUser, nutria.idNutri, Email, Rol, Nombre, Apellido from usuarios where Email =? and Password = ?',
         [email, pass],
         (err, rows, fields) => {
             if (err) {
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 router.post('/nutri',cors(), (req, res) => {
     const { email, pass } = req.body;
     mysqlConnection.query(
-        'select idNutri, EmailNutri, RolNutri, NombreNutri, ApellidoNutri, usuarios.idUser from nutricionistas nutria join usuarios on usuarios.Email=nutria.EmailNutri and usuarios.Password=nutria.PasswordNutri where EmailNutri = ? and PasswordNutri = ?',
+        'select idNutri, EmailNutri, RolNutri, NombreNutri, ApellidoNutri, usuarios.idUser from nutricionistas where EmailNutri = ? and PasswordNutri = ?',
         [email, pass],
         (err, rows, fields) => {
             if (err) {

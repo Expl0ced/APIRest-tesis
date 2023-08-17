@@ -117,3 +117,35 @@ Peso: 75 kg
 Altura: 180 cm
 Genero: otros
 Contexto físico: Mesomorfo
+
+
+-- Persona 1
+CALL nutriADDorEDIT(0, 'Sofia', 'Li', 'nutricionista', 'sofia@gmail.com', 'securepass1', 'Problemas de digestión', NULL, 63, 168, 'femenino', 'Ectomorfo');
+
+-- Persona 2
+CALL nutriADDorEDIT(0, 'Javier', 'Kim', 'nutricionista', 'javier@gmail.com', 'mypass123!', 'Baja energía', NULL, 78, 182, 'masculino', 'Mesomorfo');
+
+-- Persona 3
+CALL nutriADDorEDIT(0, 'Leila', 'Gonzalez', 'nutricionista', 'leila@gmail.com', 'strongpw456', 'Dificultad para concentrarse', NULL, 57, 157, 'femenino', 'Endomorfo');
+
+-- Persona 4
+CALL nutriADDorEDIT(0, 'Adrian', 'Nguyen', 'nutricionista', 'adrian@gmail.com', 'secret789word', 'Problemas de sueño', NULL, 72, 175, 'masculino', 'Mesomorfo');
+
+-- Persona 5
+CALL nutriADDorEDIT(0, 'Lina', 'Santos', 'nutricionista', 'lina@gmail.com', 'privates1ecure', 'Sensibilidad alimentaria', NULL, 64, 170, 'femenino', 'Ectomorfo');
+
+-- Persona 6
+CALL nutriADDorEDIT(0, 'Maxim', 'Martinez', 'nutricionista', 'maxim@gmail.com', 'passcode4321', 'Estreñimiento ocasional', NULL, 82, 186, 'masculino', 'Endomorfo');
+
+-- Persona 7
+CALL nutriADDorEDIT(0, 'Layla', 'Park', 'nutricionista', 'layla@gmail.com', 'my7secret89', 'Desequilibrio hormonal', NULL, 59, 163, 'femenino', 'Mesomorfo');
+
+-- Persona 8
+CALL nutriADDorEDIT(0, 'Emilio', 'Chen', 'nutricionista', 'emilio@gmail.com', 'secureand1safe', 'Alergias alimentarias', NULL, 69, 178, 'masculino', 'Mesomorfo');
+
+-- Persona 9
+CALL nutriADDorEDIT(0, 'Selena', 'Kumar', 'nutricionista', 'selena@gmail.com', 'protected1pw', 'Falta de energía', NULL, 58, 162, 'femenino', 'Ectomorfo');
+
+-- Persona 10
+CALL nutriADDorEDIT(0, 'Liam', 'Wu', 'nutricionista', 'liam@gmail.com', 'max4secure56', 'Problemas de digestión', NULL, 74, 180, 'masculino', 'Mesomorfo');
+

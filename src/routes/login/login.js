@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 router.post('/', (req, res) => {
     const { email, pass } = req.body;
     mysqlConnection.query(  
-        'select idUser, nutria.idNutri, Email, Rol, Nombre, Apellido from usuarios where Email =? and Password = ?',
+        'select idUser, Email, Rol, Nombre, Apellido from usuarios where Email =? and Password = ?',
         [email, pass],
         (err, rows, fields) => {
             if (err) {
